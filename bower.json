@@ -1,0 +1,35 @@
+{
+  "name": "tripsorter",
+  "description": "Simple Web App to find the shortest/ cheapest path to travel from one city to another",
+  "main": "index.js",
+  "authors": [
+    "Nikita Ahluwalia"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "travel"
+  ],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^4.1.3",
+    "backbone": "^1.3.3",
+    "font-awesome": "^5.4.1",
+    "amplify": "^1.1.2",
+    "noty": "^3.1.4",
+    "q": "1.0.1",
+    "jquery": "^3.3.1",
+    "requirejs": "^2.3.6",
+    "react": "^16.1.0",
+    "moment": "^2.22.2",
+    "lesshat": "^4.1.0"
+  }
+}

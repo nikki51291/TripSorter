@@ -1,0 +1,320 @@
+.tripSorter .page
+{
+	background-image: url(../assets/images/app-background.png);
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-position: top center;
+	background-size: cover;
+	
+	height: 100%;
+	
+	.box-sizing(border-box);
+	
+	padding: 0 !important;
+	
+	.ui-header
+	{
+		border: none;
+		
+		>*
+		{
+			transition: 0.3s ease;
+			-webkit-transition: 0.3s ease;
+		}
+		
+		&.with-logo
+		{
+			background-image: url(../assets/images/logo-horizontal-mono-white1.png);
+			background-repeat: no-repeat;
+			background-position: 8px 6px;
+            background-size: auto 28px;
+			
+			.ui-title
+			{
+			    margin: 0.3em 2.1em 0.3em 2.1em;
+		        vertical-align: middle;
+			}
+		}
+		
+		.ui-title
+		{
+			text-transform: uppercase;
+	        font-size: 1.2em;
+		    padding: 0.1em 0;
+		    margin: 0.3em 2.1em 0.3em 2.1em;
+			text-align: center;
+			
+			.page-title
+			{
+				vertical-align: middle;
+			}
+			
+		}
+		
+		.ui-btn
+		{
+			top: 0;
+			padding: 11px 10px;
+			font-size: 1em;
+			.border-radius(0);
+			font-weight: normal;
+			text-transform: uppercase;
+			border: none;
+			z-index: 999;
+		}
+		
+		.ui-btn-left
+		{
+			left: 0;	
+		}
+		
+		.ui-btn-right
+		{
+			right: 0;	
+		}
+		
+		.btn-user-settings,
+        .btn-home
+		{
+			padding: 6px 10px 5px;
+			font-size: 1.5em;
+		}
+        
+        .btn-home
+		{
+            background-image: url(../assets/images/logo-horizontal-mono-white1.png);
+			background-repeat: no-repeat;
+			background-position: 8px 6px;
+            background-size: auto 28px;
+            width: 64px;
+            text-indent: -9999px;
+		}
+		
+		.application-status-wrapper
+		{
+			position: relative;
+			z-index: 9999;
+			
+			.connection-status-wrapper
+			{
+				@checkingColor: shade(@primaryThemeColor, 25%);
+				@syncingColor: #ea7d20;
+				@onlineColor: #47a81e;
+				@offlineColor: #701771;
+				@onlineslowColor: @red;
+				
+				background: @checkingColor;
+				border-bottom: 1px solid shade(@checkingColor, 15%);
+				
+				&.syncing
+				{
+					background: @syncingColor;
+					border-bottom: 1px solid shade(@syncingColor, 15%);
+				}
+				
+				&.online
+				{
+					background: @onlineColor;
+					border-bottom: 1px solid shade(@onlineColor, 15%);
+				}
+				
+				&.onlineslow
+				{
+					background: @offlineColor;
+					border-bottom: 1px solid shade(@offlineColor, 15%);
+					
+					.marquee
+					{
+						position: fixed;
+						margin: 0 auto;
+					    overflow: hidden;
+					    white-space: nowrap;
+					    box-sizing: border-box;
+					    
+						@animation-duration: 15000ms;
+						
+						.animation(marqanimation @animation-duration linear);
+						.animation-iteration-count(infinite);
+						
+						@-webkit-keyframes marqanimation {.marqanimation;}
+						@-o-keyframes marqanimation {.marqanimation;}
+						@keyframes marqanimation {.marqanimation;}
+						
+						.marqanimation()
+						{
+							from  { left:  100% }
+    						to    { left: -100% }
+						}
+			
+					}
+					
+					.slow-text
+					{
+						text-transform: capitalize;
+					}
+					
+				}
+				
+				&.offline
+				{
+					background: @offlineColor;
+					border-bottom: 1px solid shade(@offlineColor, 15%);
+				}
+			}
+			
+			.connection-status
+			{
+				margin: 0px;
+				padding: 2px;
+			    height: 1.4em;
+				font-size: 10px;
+				text-align: center;
+				color: fade(@white, 88%);
+				font-weight: bold;
+				text-transform: uppercase;
+				
+				&.thin-bar
+				{
+					height: auto;
+				}
+			}
+		}
+	}
+	
+	.ui-content
+	{
+		height: 100%;
+		overflow-x: hidden;
+		overflow-y: auto;
+		
+		.box-sizing(border-box);
+		
+		padding: 0;
+		padding-top: 60px;
+		
+		.app-info-wrapper
+		{
+			position: fixed;
+			width: 100%;
+			z-index: 1;
+			
+			.device-status
+			{
+				margin: 0px;
+				padding: 0.2em;
+				text-align: center;
+				background: rgb(119,183,34);
+				color:  @bar-text-color;
+				z-index: 2;
+			}
+		}
+		
+		form
+		{
+			button.ui-btn
+			{
+				text-transform: uppercase;
+				font-size: 28px;
+				font-weight: normal;
+				padding: 0.2em;
+			}
+			
+			@media all and (min-width: 310px) and (max-width: 330px)
+			{
+				button.ui-btn
+				{
+					text-transform: uppercase;
+					font-size: 15px;
+					font-weight: normal;
+					padding: 0.5em;
+				}
+			}
+		}
+		
+		*::-webkit-input-placeholder
+		{
+			color: tint(@primaryThemeColor, 76%);
+			font-style: italic;
+			font-size: 0.8em;
+		}
+		
+		.ui-input-text
+		{
+			.border-radius(0);
+			.box-shadow(none);
+			border: none;
+			background-color: #86b9cc;
+			color: fade(@white, 90%); 
+		}
+		
+		.ui-select
+		{
+			.ui-btn
+			{
+				background-color: @grayLightest;
+				.box-shadow(inset 0 5px 10px -5px fade(@black, 50%));
+				color: @grayDark;
+				text-align: left;
+				border-top: 1px solid @gray;
+				border-bottom: 1px solid @grayLight;
+				border-left: 1px solid @grayLight;
+				border-right: none;
+				.border-radius(0);
+				padding: 5px 30px 5px 7px;
+				
+				&.ui-btn-icon-right:after
+				{
+					background-color: @primaryThemeColor;
+					.border-radius(0);
+					right: 0;
+				}
+			}
+			
+			&.ui-mini
+			{
+				.ui-btn
+				{
+					&.ui-btn-icon-right:after
+					{
+						height: 26px;
+						margin-top: -13px;
+						width: 26px;
+					}
+				}
+			}
+		}
+		
+		.ui-flipswitch
+		{
+			.ui-btn
+			{
+				background-color: @white;
+				text-shadow: none;
+			}
+		}
+	}
+	
+	.state-empty
+	{
+		text-align: center;
+		padding: 2em 0;
+	    width: 100%;
+	    
+		i,
+		svg
+		{
+			display: block;
+		    margin: 0 auto;
+			font-size: 4em;	
+			margin-bottom: 10px;
+			opacity: 0.50;
+			text-shadow: -1px -1px 0 fade(@black, 90%), 1px 1px 0 fade(@white, 80%);
+		}
+		
+		.state-message
+		{
+			padding: 0 1em;
+			display: block;
+		}
+	}
+}

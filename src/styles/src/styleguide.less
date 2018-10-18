@@ -1,0 +1,96 @@
+/**********/
+/* COLORS */
+/**********/
+
+/* BLUE */
+@blueLight: #89abd5;
+@blue: #3b73b9;
+@blueDark: #22436b;
+
+/* CYAN */
+@cyanLight: #6bc9ed;
+@cyan: #08a5e1;
+@cyanDark: #056083;
+
+/* ORANGE */
+@orangeLight: #ff9821;
+@orange: #ed8000;
+@orangeDark: #ca4d00;
+
+/* GREEN */
+@greenLight: #add566;
+@green: #76b900;
+@greenDark: #446b00;
+
+/* PURPLE */
+@purpleLight: #aa71aa;
+@purple: #711371;
+@purpleDark: #420b42;
+
+/* RED */
+@redLight: #f5857c;
+@red: #ee3324;
+@redDark: #8a1e15;
+
+/* YELLOW */
+@yellowLight: #fff98d;
+@yellow: #ffed45;
+@yellowDark: #ffcf45;
+
+/* GRAYS */
+@white: #ffffff;
+@offWhite: #f5f5f5;
+@grayLightest: #e9e9e9;
+@grayLighter: #d4d4d4;
+@grayLight: #bcbcbc;
+@gray: #868686;
+@grayDark: #575757;
+@grayDarker: #414141;
+@grayDarkest: #2b2b2b;
+@black: #141414;
+@trueBlack: #000000;
+
+/*********/
+/* FONTS */
+/*********/
+
+@sansFontFamily: "Helvetica Neue", Helvetica, Arial, sans-serif;
+@serifFontFamily: "meta-serif", Georgia, serif;
+@monoFontFamily: Inconsolata, Consolas, monospace;
+@brandFontFamily: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+/*************************/
+/* THEME SPECIFIC COLORS */
+/*************************/
+
+@primaryThemeColor: @grayLighter;
+@primaryThemeColorLight: shade(@primaryThemeColor, 10%);
+@primaryThemeColorDark: tint(@primaryThemeColor, 15%);
+
+@secondaryThemeColor: @grayLightest;
+
+@tertiaryThemeColor: @offWhite;
+
+@headingFontFamily: @brandFontFamily;
+@contentFontFamily: @brandFontFamily;
+
+@primaryTextColor: @grayDark;
+@alternateTextColor: @white;
+@controlsTextColor: @white;
+@inputTextColor: @grayDarkest;
+
+@shadowColor: fade(@black, 15%);
+@shadow: ~"0 1px 2px @{shadowColor}";
+@insetShadow: ~"inset 0 1px 2px @{shadowColor}";
+
+@headerBackgroundColor: @primaryThemeColor;
+@headerInvertedBackgroundColor: @gray;
+@headerTextColor: @white;
+
+@footerBackgroundColor: @headerBackgroundColor;
+@footerInvertedBackgroundColor: @headerInvertedBackgroundColor;
+@footerTextColor: @headerTextColor;
+
+@controlsBorderRadius: 0.3em;
+
+@headerHeight: 45px;

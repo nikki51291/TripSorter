@@ -1,0 +1,35 @@
+.tripSorter
+{
+	header
+	{
+	    font-weight: normal;
+	    color: @primaryTextColor;
+    }
+    
+    .ui-widget input, 
+	.ui-widget select, 
+	.ui-widget textarea, 
+	.ui-widget button
+	{
+		font-family: @global-font-family;
+	}
+    
+	&.inverted {
+		filter: invert(100%);
+	}
+}
+
+.apply-font-awesome-icon()
+{
+  font-family:"Font Awesome\ 5 Free" !important;
+  display: inline-block;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: absolute;
+  top: 50%;
+  margin-top: -0.5em;
+  background-image: none;
+}

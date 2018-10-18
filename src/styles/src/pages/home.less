@@ -1,0 +1,78 @@
+#home
+{
+    padding: 2em 0em;
+	ul
+	{
+		li
+		{
+			list-style: none;
+		    padding: 1em;
+		    border: 1px solid @gray;
+		    border-radius: 4px;
+		    margin: 0.5em 0;
+		    
+		    .details-wrapper
+		    {
+		    	.attribute-label
+		    	{
+	    		    font-weight: bold;
+		    	}
+		    	
+		    	.attribute-value
+		    	{
+	    		    margin-left: 5px;
+		    	}
+		    	
+			    .cost-details
+			    {
+			    	text-align: center;
+			    	
+			    	.discount-value
+			    	{
+			    		marign-right: 5px;
+			    	}
+			    	
+			    	.original-price
+			    	{
+			    		text-decoration: line-through;
+			    		color: @red;
+			    	}
+			    	
+			    	.sale-price
+			    	{
+			    		background: @green;
+			    		color: @white;
+			    	}
+			    }
+			    
+			    .attribute-mode
+			    {
+			    	text-align: center;
+				    .route-wrapper
+				    {
+				    	position: absolute;
+					    top: 0;
+					    width: 50px;
+					    margin-top: -24px;
+					    
+					    i
+					    {
+				    	    font-size: 2em;
+					    }
+				    }
+			    }
+		    }
+		}
+		
+	}
+	
+	.search-wrapper
+	{
+		padding: 1em;
+    	text-align: center;
+    	i
+    	{
+    		font-size: 2em;
+    	}
+	}
+}

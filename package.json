@@ -1,0 +1,38 @@
+{
+  "name": "tripsorter",
+  "version": "1.0.0",
+  "description": "Simple Web App to find the shortest/ cheapest path to travel from one city to another",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel src -d lib"
+  },
+  "keywords": [
+    "travel"
+  ],
+  "author": "Nikita Ahluwalia",
+  "license": "ISC",
+  "dependencies": {
+    "lesshat": "^4.1.0",
+    "node-dijkstra": "^2.5.0"
+  },
+  "devDependencies": {
+    "graph-dijkstra": "git+https://github.com/LincolnTechOpenSource/graph-dijkstra.git",
+    "grunt": "^1.0.3",
+    "grunt-babel": "^7.0.0",
+    "grunt-contrib-clean": "^2.0.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-cssmin": "^3.0.0",
+    "grunt-contrib-jshint": "^2.0.0",
+    "grunt-contrib-less": "^2.0.0",
+    "grunt-contrib-requirejs": "^1.0.0",
+    "grunt-contrib-uglify": "^4.0.0",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-html-build": "^0.7.1",
+    "grunt-react": "^0.12.3",
+    "load-grunt-config": "^0.19.2",
+    "load-grunt-tasks": "^4.0.0",
+    "requirejs": "^2.3.6",
+    "rjs-build-analysis": "0.0.3",
+    "time-grunt": "^1.4.0"
+  }
+}
