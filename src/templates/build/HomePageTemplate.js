@@ -90,13 +90,6 @@ class HomePage extends React.Component{
 				React.createElement("div", {className: "row"}, 
 					React.createElement("div", {className: "col-sm-10"}, 
 						React.createElement("div", {className: "row"}, 
-							React.createElement("div", {className: "col-sm-12"}, 
-								React.createElement("span", {className: "attribute-label"}, "Reference: "), 
-								React.createElement("span", {className: "attribute-value"}, item.get("reference"))
-							)
-						), 
-						React.createElement("div", {className: "row"}, 
-							
 							React.createElement("span", {className: "col-sm-2 attribute-from attribute-label"}, item.get("departure")), 
 							React.createElement("span", {className: "col-sm-8 attribute-mode"}, 
 								React.createElement("hr", null), 
@@ -115,7 +108,11 @@ class HomePage extends React.Component{
 								React.createElement("div", null, React.createElement("span", {className: "discount-value"}, item.get("discount"), "% OFF"), " ", React.createElement("span", {className: "original-price"}, this.formatCurrency(getOriginalPrice(item.get("discount"), item.get("cost")))))
 							):
 						 null, 
-						React.createElement("div", {className: "sale-price"}, this.formatCurrency(item.get("cost")))
+						React.createElement("div", {className: "sale-price"}, this.formatCurrency(item.get("cost"))), 
+						React.createElement("div", {className: "reference-wrapper"}, 
+							React.createElement("span", {className: "attribute-label"}, "Reference: "), 
+							React.createElement("span", {className: "attribute-value"}, item.get("reference"))
+						)
 					)
 				)
 				
@@ -128,18 +125,21 @@ class HomePage extends React.Component{
 
 		var model = this.props.model;
 		var cities = this.state.cities.sort();
+		var totalCost = (model.get("searchResults") && model.get("searchResults").length? _.reduce(model.get("searchResults").pluck("cost"), function(memo, currentCost){ return memo + currentCost; }, 0): 0);
+		var totalDuration = (model.get("searchResults") && model.get("searchResults").length?_.reduce(model.get("searchResults").pluck("duration"), function(memo, currentCost){ return memo + currentCost; }, 0): 0);
+		var durationValue = moment.utc(totalDuration*1000).format('HH:mm');
 		
 		return (React.createElement("div", {className: "home-page page", id: "home"}, 
 			React.createElement("form", null, 
 				React.createElement("div", {className: "form-group"}, 
 					React.createElement("select", {className: "form-control", id: "cityFrom", ref: "cityFrom", defaultValue: this.state.cityFrom, onChange: _.bind(this.onCityChange, this)}, 
-					  React.createElement("option", null, "Select"), 
+					  React.createElement("option", null, "Start From"), 
 					  _.map(cities, _.bind(this.renderCities, this))
 					)
 				), 
 				React.createElement("div", {className: "form-group"}, 
 					React.createElement("select", {className: "form-control", id: "cityTo", ref: "cityTo", defaultValue: this.state.cityTo, onChange: _.bind(this.onCityChange, this)}, 
-					  React.createElement("option", null, "Select"), 
+					  React.createElement("option", null, "Reach To"), 
 
 					   this.state.cityFrom? _.map(_.without(cities, this.state.cityFrom), _.bind(this.renderCities, this)): null
 					)
@@ -168,6 +168,14 @@ class HomePage extends React.Component{
 					)
 					: (this.state.routesFound? 
 					React.createElement("div", {className: "row"}, 
+						React.createElement("div", {className: "col-sm-12 total-wrapper"}, 
+							React.createElement("span", {className: "attribute-label"}, "Total Cost: "), 
+							React.createElement("span", {className: "attribute-value"}, this.formatCurrency(totalCost))
+						), 
+						React.createElement("div", {className: "col-sm-12 total-wrapper"}, 
+							React.createElement("span", {className: "attribute-label"}, "Total Duration: "), 
+							React.createElement("span", {className: "attribute-value"}, durationValue.split(":")[0] + " hrs " + durationValue.split(":")[1] + " mins")
+						), 
 						React.createElement("ul", {className: "col-sm-12"}, model.get("searchResults").map(_.bind(this.renderRouteDetail,this)))
 					):
 					this.state.routesFound===false?

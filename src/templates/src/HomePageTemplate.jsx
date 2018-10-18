@@ -90,13 +90,6 @@ class HomePage extends React.Component{
 				<div className="row">
 					<div className="col-sm-10">
 						<div className="row">
-							<div className="col-sm-12">
-								<span className="attribute-label">Reference: </span>
-								<span className="attribute-value">{item.get("reference")}</span>
-							</div>
-						</div>
-						<div className="row">
-							
 							<span className="col-sm-2 attribute-from attribute-label">{item.get("departure")}</span>
 							<span className="col-sm-8 attribute-mode">
 								<hr />
@@ -116,6 +109,10 @@ class HomePage extends React.Component{
 							</div>:
 						 null}
 						<div className="sale-price">{this.formatCurrency(item.get("cost"))}</div>
+						<div className="reference-wrapper">
+							<span className="attribute-label">Reference: </span>
+							<span className="attribute-value">{item.get("reference")}</span>
+						</div>
 					</div>
 				</div>
 				
@@ -128,18 +125,21 @@ class HomePage extends React.Component{
 
 		var model = this.props.model;
 		var cities = this.state.cities.sort();
+		var totalCost = (model.get("searchResults") && model.get("searchResults").length? _.reduce(model.get("searchResults").pluck("cost"), function(memo, currentCost){ return memo + currentCost; }, 0): 0);
+		var totalDuration = (model.get("searchResults") && model.get("searchResults").length?_.reduce(model.get("searchResults").pluck("duration"), function(memo, currentCost){ return memo + currentCost; }, 0): 0);
+		var durationValue = moment.utc(totalDuration*1000).format('HH:mm');
 		
 		return (<div className="home-page page" id="home">
 			<form>
 				<div className="form-group">
 					<select className="form-control" id="cityFrom" ref="cityFrom" defaultValue={this.state.cityFrom} onChange={_.bind(this.onCityChange, this)}>
-					  <option>Select</option>
+					  <option>Start From</option>
 					  {_.map(cities, _.bind(this.renderCities, this))}
 					</select>
 				</div>
 				<div className="form-group">
 					<select className="form-control" id="cityTo" ref="cityTo" defaultValue={this.state.cityTo} onChange={_.bind(this.onCityChange, this)}>
-					  <option>Select</option>
+					  <option>Reach To</option>
 
 					  { this.state.cityFrom? _.map(_.without(cities, this.state.cityFrom), _.bind(this.renderCities, this)): null}
 					</select>
@@ -168,6 +168,14 @@ class HomePage extends React.Component{
 					</div>
 					: (this.state.routesFound? 
 					<div className="row">
+						<div className="col-sm-12 total-wrapper">
+							<span className="attribute-label">Total Cost: </span>
+							<span className="attribute-value">{this.formatCurrency(totalCost)}</span>
+						</div>
+						<div className="col-sm-12 total-wrapper">
+							<span className="attribute-label">Total Duration: </span>
+							<span className="attribute-value">{durationValue.split(":")[0] + " hrs " + durationValue.split(":")[1] + " mins"}</span>
+						</div>
 						<ul className="col-sm-12">{model.get("searchResults").map(_.bind(this.renderRouteDetail,this))}</ul>
 					</div>:
 					this.state.routesFound===false?

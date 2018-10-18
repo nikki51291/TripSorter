@@ -262,9 +262,27 @@ button[disabled],
 #home ul li {
   list-style: none;
   padding: 1em;
+  padding-top: 2em;
   border: 1px solid #868686;
   border-radius: 4px;
   margin: 0.5em 0;
+  border-style: dashed;
+}
+#home ul li .attribute-from,
+#home ul li .attribute-to {
+  color: #bcbcbc;
+}
+#home ul li:first-child {
+  border-style: solid;
+}
+#home ul li:first-child .attribute-from {
+  color: #08a5e1;
+}
+#home ul li:last-child {
+  border-style: solid;
+}
+#home ul li:last-child .attribute-to {
+  color: #08a5e1;
 }
 #home ul li .details-wrapper .attribute-label {
   font-weight: bold;
@@ -286,6 +304,11 @@ button[disabled],
   background: #76b900;
   color: #ffffff;
 }
+#home ul li .details-wrapper .cost-details .reference-wrapper {
+  font-size: 0.8em;
+  font-style: italic;
+  margin-top: 5px;
+}
 #home ul li .details-wrapper .attribute-mode {
   text-align: center;
 }
@@ -304,5 +327,11 @@ button[disabled],
 }
 #home .search-wrapper i {
   font-size: 2em;
+}
+#home .total-wrapper .attribute-label {
+  font-weight: bold;
+}
+#home .total-wrapper .attribute-value {
+  color: #ca4d00;
 }
 /*# sourceMappingURL=styles.css.map */
